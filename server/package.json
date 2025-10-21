@@ -9,12 +9,12 @@
     "client": "npm run dev --prefix ../contexto-svenska"
   },
   "dependencies": {
-    "express": "^4.18.2",
+    "express": "^5.1.0",
     "cors": "^2.8.5",
-    "helmet": "^7.1.0",
-    "express-rate-limit": "^7.1.5",
+    "helmet": "^8.1.0",
+    "express-rate-limit": "^8.1.0",
     "jsonwebtoken": "^9.0.2",
-    "firebase": "^10.7.1"
+    "firebase": "^12.4.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.2"

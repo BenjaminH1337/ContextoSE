@@ -119,6 +119,14 @@ contexto-svenska/
 └── docs/                  # Dokumentation
 ```
 
+## 📚 Documentation
+
+- **[API Documentation](docs/API.md)** - Complete API reference
+- **[Semantic Engine](docs/SEMANTIC_ENGINE.md)** - Algorithm details and implementation
+- **[Privacy Policy](docs/PRIVACY.md)** - Data handling and privacy information
+- **[Contributing Guide](CONTRIBUTING.md)** - How to contribute to the project
+- **[Code of Conduct](CODE_OF_CONDUCT.md)** - Community guidelines
+
 ## 🔧 API Endpoints
 
 | Endpoint | Method | Beskrivning |
