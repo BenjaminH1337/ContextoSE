@@ -4,11 +4,14 @@ import { describe, it, expect, vi } from 'vitest';
 const mockSignInWithPopup = vi.fn();
 const mockSignOut = vi.fn();
 const mockOnAuthStateChanged = vi.fn();
+const mockGetAuth = vi.fn();
 
 vi.mock('firebase/auth', () => ({
   signInWithPopup: mockSignInWithPopup,
   signOut: mockSignOut,
   onAuthStateChanged: mockOnAuthStateChanged,
+  getAuth: mockGetAuth,
+  GoogleAuthProvider: vi.fn(),
 }));
 
 // Mock Firestore
@@ -19,6 +22,13 @@ vi.mock('firebase/firestore', () => ({
   doc: vi.fn(),
   setDoc: mockSetDoc,
   getDoc: mockGetDoc,
+}));
+
+// Mock Firebase config
+vi.mock('../../firebase/config', () => ({
+  auth: {},
+  googleProvider: {},
+  db: {},
 }));
 
 describe('Auth Service', () => {
@@ -74,11 +84,11 @@ describe('Auth Service', () => {
     expect(mockSignOut).toHaveBeenCalled();
   });
 
-  it('should handle auth state changes', () => {
+  it('should handle auth state changes', async () => {
     const mockCallback = vi.fn();
     mockOnAuthStateChanged.mockReturnValue(() => {});
 
-    const { onAuthChanged } = require('../authService');
+    const { onAuthChanged } = await import('../authService');
     
     onAuthChanged(mockCallback);
     expect(mockOnAuthStateChanged).toHaveBeenCalledWith(expect.any(Object), mockCallback);

@@ -17,7 +17,7 @@ describe('Game Service API Calls', () => {
     (global.fetch as any).mockResolvedValue(mockResponse);
 
     // Import here to avoid module loading issues
-    const { isValidSwedishWord } = await import('../services/gameService');
+    const { isValidSwedishWord } = await import('../gameService');
     
     const result = await isValidSwedishWord('hund');
     expect(result).toBe(true);
@@ -39,7 +39,7 @@ describe('Game Service API Calls', () => {
     
     (global.fetch as any).mockResolvedValue(mockResponse);
 
-    const { isValidSwedishWord } = await import('../services/gameService');
+    const { isValidSwedishWord } = await import('../gameService');
     
     const result = await isValidSwedishWord('xyz123');
     expect(result).toBe(false);
@@ -57,7 +57,7 @@ describe('Game Service API Calls', () => {
     
     (global.fetch as any).mockResolvedValue(mockResponse);
 
-    const { calculateSimilarity } = await import('../services/gameService');
+    const { calculateSimilarity } = await import('../gameService');
     
     const result = await calculateSimilarity('hund', 'katt');
     expect(result).toEqual({
@@ -79,7 +79,7 @@ describe('Game Service API Calls', () => {
     
     (global.fetch as any).mockResolvedValue(mockResponse);
 
-    const { calculateSimilarity } = await import('../services/gameService');
+    const { calculateSimilarity } = await import('../gameService');
     
     const result = await calculateSimilarity('hund', 'hund');
     expect(result.isCorrect).toBe(true);
