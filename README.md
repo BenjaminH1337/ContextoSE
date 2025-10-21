@@ -2,7 +2,7 @@
 
 Ett svenskt ordgissningsspel inspirerat av det populära Contexto-spelet. Spelare försöker gissa ett hemligt svenskt ord genom att få feedback på hur semantiskt nära deras gissningar är.
 
-## 🚀 Funktioner
+## Funktioner
 
 - **Google-inloggning** med Firebase Authentication
 - **Spellogik** med similarity-beräkningar för svenska ord
@@ -10,7 +10,7 @@ Ett svenskt ordgissningsspel inspirerat av det populära Contexto-spelet. Spelar
 - **Responsiv design** med Tailwind CSS
 - **Firestore-databas** för att spara spelresultat
 
-## 🛠️ Teknisk Stack
+##  Teknisk Stack
 
 - **Frontend**: React + TypeScript + Vite
 - **Styling**: Tailwind CSS
@@ -18,7 +18,7 @@ Ett svenskt ordgissningsspel inspirerat av det populära Contexto-spelet. Spelar
 - **Databas**: Firebase Firestore
 - **Deployment**: Vercel/Netlify (rekommenderat)
 
-## 📦 Installation
+## Installation
 
 1. **Klona projektet**
    ```bash
@@ -57,7 +57,7 @@ Ett svenskt ordgissningsspel inspirerat av det populära Contexto-spelet. Spelar
    npm run dev
    ```
 
-## 🔧 Firebase-konfiguration
+##  Firebase-konfiguration
 
 ### Firestore Säkerhetsregler
 
@@ -108,7 +108,7 @@ resultId (auto-generated)
   - attempts: Array<string>
 ```
 
-## 🎮 Hur man spelar
+##  Hur man spelar
 
 1. **Logga in** med ditt Google-konto
 2. **Gissa ord** genom att skriva svenska ord i input-fältet
@@ -116,23 +116,21 @@ resultId (auto-generated)
 4. **Använd ledtrådarna** för att komma närmare det rätta svaret
 5. **Vinn** genom att gissa rätt ord!
 
-## 🔮 Framtida förbättringar
+##  Framtida förbättringar
 
 - **Bättre similarity-algoritm** med svenska word embeddings
-- **Dagligt ord**-funktion
-- **Statistik per användare**
-- **Olika svårighetsgrader**
 - **Sociala funktioner** (dela resultat)
 - **Mobila notifikationer**
+- **Uppdatera ordlista från mock data med 500 ord till SAOL**
 
-## 🤝 Bidrag
+##  Bidrag
 
 Bidrag är välkomna! Öppna en issue eller skicka en pull request.
 
-## 📄 Licens
+##  Licens
 
 MIT License - se LICENSE-filen för detaljer.
 
-## 🙏 Tack
+##  Tack
 
 Tack till originalet Contexto för inspirationen!
