@@ -1,138 +1,200 @@
-# Contexto Svenska 🇸🇪
+# 🎯 Contexto Svenska
 
-Ett svenskt ordgissningsspel inspirerat av det populära Contexto-spelet. Spelare försöker gissa ett hemligt svenskt ord genom att få feedback på hur semantiskt nära deras gissningar är.
+**Ett svenskt ordgissningsspel inspirerat av Contexto - där semantisk likhet leder dig till det dagliga ordet!**
 
-## 🚀 Funktioner
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://reactjs.org/)
+[![Firebase](https://img.shields.io/badge/Firebase-FFCA28?logo=firebase&logoColor=black)](https://firebase.google.com/)
 
-- **Google-inloggning** med Firebase Authentication
-- **Spellogik** med similarity-beräkningar för svenska ord
-- **Leaderboard** för att spåra de bästa spelarna
-- **Responsiv design** med Tailwind CSS
-- **Firestore-databas** för att spara spelresultat
+## 🎮 Vad gör detta spel unikt?
+
+**Contexto Svenska** är inte bara ett ordgissningsspel - det är en semantisk resa genom svenska språket! Till skillnad från Wordle som fokuserar på bokstavspositioner, använder vi avancerad semantisk analys för att ge dig meningsfulla ledtrådar.
+
+### ✨ Huvudfunktioner
+
+- 🎯 **Dagligt svenskt ord** - Ett nytt ord varje dag för alla spelare
+- 🧠 **Semantisk likhet** - Få ledtrådar baserat på betydelse, inte bara stavning
+- 🏆 **Daglig leaderboard** - Topp 5 vinnare med färre gissningar
+- 📊 **Historisk statistik** - Följ din utveckling över tid
+- 🔒 **Säker server-side logik** - Semantisk analys skyddad från klienten
+- ⚡ **Obegränsade gissningar** - Spela tills du hittar rätt ord
+- 🚫 **En chans per dag** - Fair play för alla spelare
 
 ## 🛠️ Teknisk Stack
 
-- **Frontend**: React + TypeScript + Vite
-- **Styling**: Tailwind CSS
-- **Autentisering**: Firebase Authentication (Google Sign-In)
-- **Databas**: Firebase Firestore
-- **Deployment**: Vercel/Netlify (rekommenderat)
+### Frontend
+- **React 18** + **TypeScript** - Moderna UI-komponenter
+- **Vite** - Snabb utvecklingsserver och build
+- **Tailwind CSS** - Responsiv design system
+- **Firebase Auth** - Google Sign-In integration
 
-## 📦 Installation
+### Backend
+- **Express.js** - RESTful API server
+- **Custom Semantic Engine** - Hierarkisk kategori-baserad likhet
+- **Rate Limiting** - 500 gissningar per runda
+- **JWT Authentication** - Säker API-kommunikation
 
-1. **Klona projektet**
+### Database & Storage
+- **Firebase Firestore** - Användardata och spelresultat
+- **In-memory Storage** - Dagliga leaderboards och spelarstatus
+
+## 🚀 Snabbstart
+
+### Förutsättningar
+- Node.js 18+ 
+- npm eller yarn
+- Firebase-projekt (för authentication)
+
+### Installation
+
+1. **Klona repositoryt**
    ```bash
-   git clone <repository-url>
-   cd contexto-svenska
+   git clone https://github.com/BenjaminH1337/ContextoSE.git
+   cd ContextoSE/contexto-svenska
    ```
 
 2. **Installera dependencies**
    ```bash
+   # Frontend
    npm install
-   ```
-
-3. **Konfigurera Firebase**
-   - Skapa ett nytt projekt på [Firebase Console](https://console.firebase.google.com/)
-   - Aktivera Authentication → Google Sign-In
-   - Skapa Firestore Database (börja i testläge)
-   - Kopiera Firebase-konfigurationen
-
-4. **Sätt upp miljövariabler**
-   ```bash
-   cp env.example .env
-   ```
    
-   Fyll i dina Firebase-konfigurationsvärden i `.env`-filen:
-   ```
-   VITE_FIREBASE_API_KEY=din_api_key
-   VITE_FIREBASE_AUTH_DOMAIN=din_auth_domain
-   VITE_FIREBASE_PROJECT_ID=ditt_project_id
-   VITE_FIREBASE_STORAGE_BUCKET=din_storage_bucket
-   VITE_FIREBASE_MESSAGING_SENDER_ID=din_sender_id
-   VITE_FIREBASE_APP_ID=ditt_app_id
+   # Backend
+   cd server
+   npm install
+   cd ..
    ```
 
-5. **Starta utvecklingsservern**
+3. **Konfigurera miljövariabler**
    ```bash
+   # Kopiera exempel-filen
+   cp env.example .env
+   
+   # Fyll i dina Firebase-uppgifter
+   nano .env
+   ```
+
+4. **Starta utvecklingsservrar**
+   ```bash
+   # Terminal 1: Backend (port 3001)
+   cd server && node index.js
+   
+   # Terminal 2: Frontend (port 5173)
    npm run dev
    ```
 
-## 🔧 Firebase-konfiguration
+5. **Öppna i webbläsaren**
+   ```
+   http://localhost:5173
+   ```
 
-### Firestore Säkerhetsregler
+## 🎯 Hur man spelar
 
-```javascript
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /users/{userId} {
-      allow read: if true;
-      allow write: if request.auth != null && request.auth.uid == userId;
-    }
-    
-    match /gameResults/{resultId} {
-      allow read: if true;
-      allow create: if request.auth != null && 
-                      request.resource.data.userId == request.auth.uid;
-    }
-    
-    match /dailyWords/{date} {
-      allow read: if true;
-      allow write: if false; // Endast admin
-    }
-  }
-}
+1. **Logga in** med Google-kontot
+2. **Gissa svenska ord** - få semantiska ledtrådar
+3. **Se din ranking** - färre gissningar = bättre placering
+4. **Kom tillbaka imorgon** för ett nytt ord!
+
+### Ledtrådar
+- **Perfekt!** - Exakt match (du vann!)
+- **Väldigt nära!** - 80%+ semantisk likhet
+- **Nära** - 60-80% likhet
+- **Ganska nära** - 40-60% likhet
+- **Långt borta** - Under 40% likhet
+
+## 🏗️ Projektstruktur
+
+```
+contexto-svenska/
+├── src/                    # Frontend React-app
+│   ├── components/         # UI-komponenter
+│   ├── hooks/             # Custom React hooks
+│   ├── services/          # API-kommunikation
+│   ├── types/             # TypeScript definitions
+│   └── firebase/          # Firebase konfiguration
+├── server/                # Backend Express-server
+│   ├── index.js           # Huvudserver med API-endpoints
+│   └── package.json       # Server dependencies
+├── public/                # Statiska filer
+└── docs/                  # Dokumentation
 ```
 
-### Databasstruktur
+## 🔧 API Endpoints
 
-**users/**
-```
-userId (document ID)
-  - displayName: string
-  - email: string
-  - photoURL: string
-  - createdAt: timestamp
-  - totalGames: number
-  - totalWins: number
-```
+| Endpoint | Method | Beskrivning |
+|----------|--------|-------------|
+| `/api/daily-word` | GET | Hämta dagens ord |
+| `/api/validate-word` | POST | Validera svenskt ord |
+| `/api/calculate-similarity` | POST | Beräkna semantisk likhet |
+| `/api/save-game-result` | POST | Spara spelresultat |
+| `/api/daily-leaderboard` | GET | Daglig topplista |
+| `/api/historical-leaderboards` | GET | Historiska resultat |
+| `/api/player-stats` | GET | Spelarstatistik |
 
-**gameResults/**
-```
-resultId (auto-generated)
-  - userId: string
-  - targetWord: string
-  - guesses: number
-  - won: boolean
-  - timestamp: timestamp
-  - attempts: Array<string>
-```
+## 🧠 Semantisk Likhet
 
-## 🎮 Hur man spelar
+Vår algoritm använder en hierarkisk kategori-baserad approach:
 
-1. **Logga in** med ditt Google-konto
-2. **Gissa ord** genom att skriva svenska ord i input-fältet
-3. **Få feedback** om hur nära din gissning är till det rätta ordet
-4. **Använd ledtrådarna** för att komma närmare det rätta svaret
-5. **Vinn** genom att gissa rätt ord!
+- **Starka relationer** (0.9-1.0): Direkta synonymer, hyperonymer
+- **Milda relationer** (0.6-0.8): Relaterade koncept, samma kategori
+- **Orthografisk fallback** (0.1-0.5): Levenshtein distance för okända ord
 
-## 🔮 Framtida förbättringar
+## 🔒 Säkerhet
 
-- **Bättre similarity-algoritm** med svenska word embeddings
-- **Dagligt ord**-funktion
-- **Statistik per användare**
-- **Olika svårighetsgrader**
-- **Sociala funktioner** (dela resultat)
-- **Mobila notifikationer**
+- ✅ **Server-side validation** - All semantisk logik på servern
+- ✅ **Rate limiting** - 500 gissningar per runda
+- ✅ **Input sanitization** - Säker ordvalidering
+- ✅ **JWT tokens** - Säker API-autentisering
+- ✅ **CORS protection** - Begränsad cross-origin access
 
-## 🤝 Bidrag
+## 🤝 Bidra
 
-Bidrag är välkomna! Öppna en issue eller skicka en pull request.
+Vi välkomnar bidrag! Se [CONTRIBUTING.md](CONTRIBUTING.md) för detaljer.
+
+### Utvecklingsworkflow
+1. Fork repositoryt
+2. Skapa feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit ändringar (`git commit -m 'Add amazing feature'`)
+4. Push till branch (`git push origin feature/amazing-feature`)
+5. Öppna Pull Request
+
+## 📋 Roadmap
+
+### Kort sikt (veckor)
+- [ ] Automatiserade tester (Jest, Vitest)
+- [ ] ESLint + Prettier konfiguration
+- [ ] GitHub Actions CI/CD
+- [ ] Förbättrad dokumentation
+
+### Medellång sikt (månader)
+- [ ] Docker containerization
+- [ ] Produktionsdeployment
+- [ ] Prestandaoptimering
+- [ ] Tillgänglighetsförbättringar
+
+### Lång sikt (framtiden)
+- [ ] Mobilapp (React Native)
+- [ ] Flerspråkigt stöd
+- [ ] Sociala funktioner
+- [ ] AI-driven ordval
 
 ## 📄 Licens
 
-MIT License - se LICENSE-filen för detaljer.
+Detta projekt är licensierat under MIT License - se [LICENSE](LICENSE) filen för detaljer.
 
 ## 🙏 Tack
 
-Tack till originalet Contexto för inspirationen!
+- **Contexto** för inspirationen
+- **Firebase** för backend-tjänster
+- **Tailwind CSS** för styling
+- **Svenska språket** för alla fantastiska ord!
+
+## 📞 Kontakt
+
+**Benjamin Hawtin** - [@BenjaminH1337](https://github.com/BenjaminH1337)
+
+Projektlänk: [https://github.com/BenjaminH1337/ContextoSE](https://github.com/BenjaminH1337/ContextoSE)
+
+---
+
+**Lycka till med att lösa dagens ord! 🎯**
