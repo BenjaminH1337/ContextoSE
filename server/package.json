@@ -1,0 +1,25 @@
+{
+  "name": "contexto-svenska-server",
+  "version": "1.0.0",
+  "description": "Secure server-side API for Contexto Svenska game",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "nodemon server/index.js",
+    "client": "npm run dev --prefix ../contexto-svenska"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "express-rate-limit": "^7.1.5",
+    "jsonwebtoken": "^9.0.2",
+    "firebase": "^10.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
