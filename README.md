@@ -162,9 +162,9 @@ Vi välkomnar bidrag! Se [CONTRIBUTING.md](CONTRIBUTING.md) för detaljer.
 
 ### Kort sikt (veckor)
 - [ ] Automatiserade tester (Jest, Vitest)
-- [ ] ESLint + Prettier konfiguration
-- [ ] GitHub Actions CI/CD
-- [ ] Förbättrad dokumentation
+- [ ] ESLint + Prettier konfiguration ✅
+- [ ] GitHub Actions CI/CD ✅
+- [ ] Förbättrad dokumentation ✅
 
 ### Medellång sikt (månader)
 - [ ] Docker containerization
